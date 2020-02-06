@@ -1,59 +1,53 @@
-# STRETCH: implement Linear Search				
+# STRETCH: Linear Search				
 def linear_search(arr, target):
-  
-  # TO-DO: add missing code
+  i = 0
+  #often n = target
   while i in range(len(arr) - 1):
-    for i in arr:
-      # return target in arr
-      if i == target:
-        return i
+    if arr[i] == target:
+      print('Found it!')
+      return True
+    i = i+1
+  return -1   # not found
 
-    return -1   # not found
 
-
-# STRETCH: write an iterative implementation of Binary Search 
+# STRETCH: Iterative Binary Search 
 def binary_search(arr, target):
-
-  if len(arr) == 0:
-    return -1 # array empty
-    
   low = 0
   high = len(arr)-1
+  # counter = 0 do I need this??
 
-  # # TO-DO: add missing code
-  counter = 0 
-  while low < high:
-    counter += 1
+  if len(arr) == 0:
+    return -1
+    
+  while low <= high:
     middle = (high + low ) // 2
+    middle_value = arr[middle]
+    # counter += 1
 
-    if arr[middle] == target:
-      return 1
-      # return True
-    else: 
-      if target < arr[middle]:
+    if middle_value == target:
+      return True
+    elif target < middle_value: 
         high = middle - 1
-      else:
-        low = middle + 1
+    else:
+      low = middle + 1
+
+  return False
 
 
-  return -1 # not found
-  # return False
-
-
-# STRETCH: write a recursive implementation of Binary Search 
-# this is where swap happens?
+# STRETCH: Recursive Binary Search 
 def binary_search_recursive(arr, target, low, high):
-  pivot_index = high
-  # middle = (low+high)//2
-
-  for i in range (low, high - 1):
-    if arr[pivot_index] < arr[i]:
-      arr[pivot_index], arr[i] = arr[i], arr[pivot_index]
-      arr[pivot_index], arr[pivot_index + 1] = arr[pivot_index + 1], arr[pivot_index]
-      pivot_index = pivot_index + 1
-
-  # binary_search_recursive(arr, low, pivot_index - 1)
-  # binary_search_recursive(arr, pivot_index + 1, pivot_index - 1)
-
-  # TO-DO: add missing if/else statements, recursive calls
+  low = 0
+  high = len(arr)-1
+  middle = (low+high)//2
+  
+  if low > high:
+    return False
+  
+  else:
+    if target == arr[middle]:
+      return True
+    elif target < arr[middle]:
+      return binary_search_recursive(arr, target, low, middle-1)
+    else:
+      return binary_search_recursive(arr, target, middle+1, high)
   

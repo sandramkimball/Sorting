@@ -31,3 +31,13 @@ def bubble_sort( arr ):
 def count_sort( arr, maximum=-1 ):
 
     return arr
+
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        curr_index = arr[i]
+        j = i
+        while j > 0 and curr_index < arr[j-1]:
+            arr[j] = arr[j-1]
+            j -= 1
+        arr[j] = curr_index
+    return arr

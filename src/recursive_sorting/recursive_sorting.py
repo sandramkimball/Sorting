@@ -10,7 +10,7 @@ def merge( arrA, arrB ):
         if a >= arrB[b]:
             merged_arr = arrB[b]
         elif b >= arrB[b]:
-            merged_arr[i] == arrA[a]
+            merged_arr[i] = arrA[a]
 
         elif arrA[a] < arrB[b]:
             merged_arr[i] = arrB[b]

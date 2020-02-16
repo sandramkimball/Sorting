@@ -1,28 +1,27 @@
 # Selection Sort: 
 def selection_sort( arr ):
-    for i in range(0, len(arr) - 1):
+    for i in range(0, len(arr)):
+        cur_index = i
+        sml_index = cur_index #j=arr[i+1]? j=i?\
         # j = i-1
-        cur_index = arr[i]
-        next_index = arr[i+1] #j=arr[i+1]? j=i?
-        j = i
-
-        while next_index > 0 and cur_index < arr[j-1]:
-            if arr[j] > cur_index:
-                arr[j] = next_index
-            else:
-                j -= 1 # cur_index -=1  
-                cur_index, next_index = next_index, cur_index
-               
+        for j in range(i, len(arr)):
+            if arr[j] < arr[sml_index]:
+                sml_index = j
+    
+        arr[sml_index], arr[cur_index] = arr[cur_index], arr[sml_index]
     return arr
 
 
 # Bubble Sort:
 def bubble_sort( arr ):
-    n = len(arr)
-    for i in range(2, n-1):
-        for j in range(0, n-1-i):
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
+    n = len(arr) - 1
+    while n > 0:
+        n = len(arr) - 1
+        for i in range(0, n):
+            if arr[i] > arr[i+1]:
+                arr[i], arr[i+1] = arr[i+1], arr[i]
+            else:
+                n -= 1
     return arr
 
 
